@@ -1,4 +1,4 @@
-package io.javabrains.resumeportal;
+package io.javabrains.resumeportal.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
