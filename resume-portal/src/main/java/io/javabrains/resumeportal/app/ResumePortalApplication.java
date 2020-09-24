@@ -2,12 +2,10 @@ package io.javabrains.resumeportal.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-
-import io.javabrains.resumeportal.repository.UserRepository;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackageClasses = UserRepository.class)
+@ComponentScan(basePackages = "io.javabrains.resumeportal.controller")
 public class ResumePortalApplication {
 
 	public static void main(String[] args) {
