@@ -64,10 +64,10 @@ public class HomeController {
 		model.addAttribute("userId", userId);
 		UserProfile userProfile = userProfileOptional.get();
 		model.addAttribute("userProfile", userProfile);
-	
+
 		System.out.println(userProfile.getJobs());
-		
+
 		return "profile-templates/" + userProfile.getId() + "/index";
-	
+
 	}
 }
