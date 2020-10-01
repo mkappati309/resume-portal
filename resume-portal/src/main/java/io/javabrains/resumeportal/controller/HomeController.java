@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,29 +21,31 @@ public class HomeController {
 	@Autowired
 	private UserProfileRepository userProfileRepository;
 
-	@GetMapping("/user")
-	public String hello() {
+	@GetMapping("/")
+	public String home() {
 		UserProfile profile1 = new UserProfile();
 		profile1.setId(1);
-		profile1.setDesignation("Designation");
-		profile1.setUserName("einstein");
-		profile1.setFirstName("Einstein");
-		profile1.setLastName("Albert");
+		profile1.setUserName("Manikanth");
+		profile1.setFirstName("Manikanth");
+		profile1.setLastName("Reddy");
+		profile1.setDesignation("Developer");
 		profile1.setTheme(1);
+		profile1.setEmail("manikanthreddy@gmail.com");
+		profile1.setPhone("999999999");
 
 		Job job1 = new Job();
-		job1.setCompany("Company 1");
-		job1.setDesignation("Designation");
 		job1.setId(1);
+		job1.setCompany("Company 1");
+		job1.setDesignation("Designation 1");
 		job1.setStartDate(LocalDate.of(2020, 1, 1));
 		job1.setEndDate(LocalDate.of(2020, 3, 1));
 
 		Job job2 = new Job();
-		job2.setCompany("Company 2");
-		job2.setDesignation("Designation");
 		job2.setId(2);
+		job2.setCompany("Company 2");
+		job2.setDesignation("Designation 2");
 		job2.setStartDate(LocalDate.of(2019, 5, 1));
-		job2.setEndDate(LocalDate.of(2020, 1, 1));
+		job2.setEndDate(LocalDate.of(2019, 12, 31));
 
 		profile1.setJobs(Arrays.asList(job1, job2));
 
@@ -59,15 +62,13 @@ public class HomeController {
 	@GetMapping("/view/{userId}")
 	public String view(@PathVariable String userId, Model model) {
 		Optional<UserProfile> userProfileOptional = userProfileRepository.findByUserName(userId);
-		userProfileOptional.orElseThrow(() -> new RuntimeException("Not Found " + userId));
-
+		userProfileOptional.orElseThrow(() -> new UsernameNotFoundException("Not Found" + userId));
 		model.addAttribute("userId", userId);
 		UserProfile userProfile = userProfileOptional.get();
 		model.addAttribute("userProfile", userProfile);
-
+		
 		System.out.println(userProfile.getJobs());
-
-		return "profile-templates/" + userProfile.getId() + "/index";
-
+		
+		return "/profile-templates/" + userProfile.getTheme() + "/index";
 	}
 }

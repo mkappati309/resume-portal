@@ -28,10 +28,15 @@ public class UserProfile {
 	private String phone;
 	private String designation;
 
+	// a single userprofile will have many jobs. represented by OneToMany Mapping.
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
 
+	// the user profile table has the job details by the name job_id.
+	// this is going to be a foreign key for the job details primary key.
 	@JoinColumn(name = "job_id")
 
+	// a single user will have many number of jobs. this is represented through a
+	// list.
 	List<Job> jobs = new ArrayList<>();
 
 	public List<Job> getJobs() {
@@ -42,20 +47,20 @@ public class UserProfile {
 		this.jobs = jobs;
 	}
 
-	public String getUserName() {
-		return userName;
-	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public int getTheme() {
