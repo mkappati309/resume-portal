@@ -20,15 +20,14 @@
 		</div>
 		
 		<div id="name">
-			<h1 class="quickFade delayTwo">Manikanth Kappati</h1>
-			<h2 class="quickFade delayThree">Job Title</h2>
+			<h1 class="quickFade delayTwo"><span th:text ="${userProfile.firstName}">Albert</span><span th:text = "${userProfile.lastName}">Einstein</span></h1>
+			<h2 class="quickFade delayThree" th:text="${userProfile.designation}">Job title</h2>
 		</div>
 		
 		<div id="contactDetails" class="quickFade delayFour">
 			<ul>
-				<li>e: <a href="mailto:joe@bloggs.com" target="_blank">manikanthreddy91@gmail.com</a></li>
-				<li>w: <a href="http://www.bloggs.com">www.mkappat.com</a></li>
-				<li>m: 6189543977</li>
+				<li>e: <span th:text = "${userProfile.email}">manikanthreddy91@gmail.com</span></li>
+				<li>m: <span th:text = "${userProfile.phone}">1111-1111</span></li>
 			</ul>
 		</div>
 		<div class="clear"></div>
