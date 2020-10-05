@@ -39,8 +39,21 @@ public class UserProfile {
 	// list.
 	List<Job> jobs = new ArrayList<>();
 
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	List<Education> educations = new ArrayList<>();
+
+	@JoinColumn(name = "education_id")
+
 	public List<Job> getJobs() {
 		return jobs;
+	}
+
+	public List<Education> getEducations() {
+		return educations;
+	}
+
+	public void setEducations(List<Education> educations) {
+		this.educations = educations;
 	}
 
 	public void setJobs(List<Job> jobs) {
