@@ -1,7 +1,6 @@
 package io.javabrains.resumeportal.controller;
 
 import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import io.javabrains.resumeportal.model.Education;
 import io.javabrains.resumeportal.model.Job;
 import io.javabrains.resumeportal.model.UserProfile;
 import io.javabrains.resumeportal.repository.UserProfileRepository;
@@ -55,8 +55,25 @@ public class HomeController {
 		profile1.getJobs().add(job1);
 		profile1.getJobs().add(job2);
 
-		userProfileRepository.save(profile1);
+		Education education1 = new Education();
+		education1.setCollege("US University");
+		education1.setQualification("pass ithe chalu");
+		education1.setStartDate(LocalDate.of(2014, 8, 01));
+		education1.setEndDate(LocalDate.of(2016, 5, 31));
+		education1.setSummary("Wasted time");
 
+		Education education2 = new Education();
+		education2.setCollege("shamshabad oorlo unnadhi");
+		education2.setQualification("masth enjoy chesinam");
+		education2.setStartDate(LocalDate.of(2009, 8, 01));
+		education2.setEndDate(LocalDate.of(2013, 5, 31));
+		education2.setSummary("chadivinam thi");
+
+		profile1.getEducations().clear();
+		profile1.getEducations().add(education1);
+		profile1.getEducations().add(education2);
+
+		userProfileRepository.save(profile1);
 		return "profile";
 	}
 
