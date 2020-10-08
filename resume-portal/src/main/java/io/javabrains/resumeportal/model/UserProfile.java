@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -43,6 +44,17 @@ public class UserProfile {
 	List<Education> educations = new ArrayList<>();
 
 	@JoinColumn(name = "education_id")
+
+	@ElementCollection(targetClass = String.class)
+	List<String> skills = new ArrayList<>();
+
+	public List<String> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(List<String> skills) {
+		this.skills = skills;
+	}
 
 	public List<Job> getJobs() {
 		return jobs;

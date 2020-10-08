@@ -73,6 +73,13 @@ public class HomeController {
 		profile1.getEducations().add(education1);
 		profile1.getEducations().add(education2);
 
+		profile1.getSkills().clear();
+
+		profile1.getSkills().add("Quantum Physics");
+		profile1.getSkills().add("Motion of Molecules");
+		profile1.getSkills().add("Musician");
+		profile1.getSkills().add("Philosophy");
+
 		userProfileRepository.save(profile1);
 		return "profile";
 	}
