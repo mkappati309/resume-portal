@@ -87,15 +87,8 @@
 				</div>
 
 				<div class="sectionContent">
-					<ul class="keySkills">
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
-						<li>A Key Skill</li>
+					<ul class="keySkills" th:each="skill : ${userProfile.skills}">
+						<li th:text="${skill}">A Key Skill</li>
 					</ul>
 				</div>
 				<div class="clear"></div>
@@ -112,9 +105,7 @@
 					<article>
 						<h2 th:text="${education.college}">College/University</h2>
 						<p class="subDetails" th:text="${education.qualification}">Qualification</p>
-						<p th:text="${education.summary}">Lorem ipsum dolor sit amet,
-							consectetur adipiscing elit. Donec ultricies massa et erat luctus
-							hendrerit. Curabitur non consequat enim.</p>
+						<p th:text="${education.summary}">.</p>
 					</article>
 
 				</div>
